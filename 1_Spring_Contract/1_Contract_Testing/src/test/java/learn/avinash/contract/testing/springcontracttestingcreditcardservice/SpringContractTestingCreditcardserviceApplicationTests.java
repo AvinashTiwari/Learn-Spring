@@ -26,7 +26,7 @@ public class SpringContractTestingCreditcardserviceApplicationTests {
 		mockMvc.perform(post("/credit-card-applications")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content("{"+
-						"\"citizenNumber\":1234" +
+						"\"ct\":1234" +
 						"\"cardType\":\"GOLD\""+
 						"}"))
 				.andDo(print())
