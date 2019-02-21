@@ -43,5 +43,24 @@ public class SpringContractTestingCreditcardserviceApplicationTests {
 
 	}
 
+	@Test
+	public void ShouldDenyApplicationWhenCreditScoreIslow() throws Exception {
+		mockMvc.perform(post("/credit-card-applications")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content("{"+
+						"\"citizenNumber\":4444," +
+						"\"cardType\":\"GOLD\""+
+						"}"))
+				.andDo(print())
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(content().json(
+						"{" +
+								"\"status\":\"DENIED\""+
+								"}"))
+				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+
+
+	}
+
 }
 
