@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@AutoConfigureStubRunner(ids = "learn.avinash:creditcheckservice:+:stubs:8080", workOffline = true)
+@AutoConfigureStubRunner(ids = "learn.avinash.creditcheckservice:creditcheckservice:+:stubs:8080", workOffline = true)
 public class CreditcardserviceApplicationTests {
 
     @Autowired
