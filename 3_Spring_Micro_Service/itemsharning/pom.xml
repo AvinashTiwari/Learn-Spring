@@ -21,17 +21,22 @@
 	</properties>
 
 	<modules>
-		<module>userservice</module>
-		<module>itemservice</module>
-        <module>itemsharning-userservice</module>
-		<module>itemsharning-userservice</module>
 
-	</modules>
+
+        <module>../itemsharning-userservice</module>
+
+
+    </modules>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
