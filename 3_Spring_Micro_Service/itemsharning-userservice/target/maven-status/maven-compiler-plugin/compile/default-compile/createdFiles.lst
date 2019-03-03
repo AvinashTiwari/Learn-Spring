@@ -1,1 +1,10 @@
+com\itemsharning\userservice\model\Role.class
+com\itemsharning\userservice\model\User.class
+com\itemsharning\userservice\service\impl\UserServiceImpl.class
+com\itemsharning\userservice\model\UserRole.class
+com\itemsharning\userservice\model\Item.class
+com\itemsharning\userservice\controller\UserController.class
+com\itemsharning\userservice\repositry\UserRepositry.class
+com\itemsharning\userservice\model\Authority.class
 com\itemsharning\userservice\UserServiceApplication.class
+com\itemsharning\userservice\service\UserService.class
