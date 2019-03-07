@@ -5,7 +5,7 @@ import com.itemsharning.userservice.model.User;
 import com.itemsharning.userservice.model.UserRole;
 import com.itemsharning.userservice.repositry.UserRepositry;
 import com.itemsharning.userservice.service.UserService;
-import org.apache.catalina.security.SecurityUtil;
+import com.itemsharning.userservice.utility.SecurityUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
             Date today= new Date();
             user.setJoinDate(today);
 
-            String encryptedPassword =  SecurityUtili
+            String encryptedPassword = SecurityUtility.passwordEncoder().encode(user.getPassword());
             user.setPassword(encryptedPassword);
             localuser = userRepositry.save(user);
 

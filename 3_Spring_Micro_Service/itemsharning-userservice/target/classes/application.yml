@@ -15,5 +15,9 @@ spring:
     testWhileIdle: "true"
     validationQuery: "Select 1"
 
+security:
+  basic:
+    enabled: false
+
 
 
