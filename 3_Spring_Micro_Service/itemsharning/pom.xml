@@ -24,6 +24,7 @@
 
 
         <module>../itemsharning-userservice</module>
+        <module>../itemsharning-itemservice</module>
 
 
     </modules>
