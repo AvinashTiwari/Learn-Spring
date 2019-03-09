@@ -47,31 +47,46 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<Item> getAllItems() {
-        return null;
+        return (List<Item> ) itemRepository.findAll();
     }
 
     @Override
     public List<Item> getItemsByUserName(String userName) {
-        return null;
+        User user= userService.findByUserName(userName);
+
+        return (List<Item> ) itemRepository.findByUser(user);
     }
 
     @Override
     public Item getByItem(Long id) {
-        return null;
+        return itemRepository.findOne(id);
     }
 
     @Override
     public Item upateItem(Item item) throws IOException {
+        Item localitem = getByItem(item.getId());
+        if(localitem == null){
+           new IOException("Item not found");
+        }else
+        {
+            localitem.setName(item.getName());
+            localitem.setItemCondition(localitem.getItemCondition());
+            localitem.setStatus(localitem.getStatus());
+            localitem.setDescription(localitem.getDescription());
+            return itemRepository.save(localitem);
+
+        }
+
         return null;
     }
 
     @Override
     public void deleteItemById(Long id) {
-
+        itemRepository.delete(id);
     }
 
     @Override
     public User getUserByUsername(String username) {
-        return null;
+        return userService.findByUserName(username);
     }
 }
