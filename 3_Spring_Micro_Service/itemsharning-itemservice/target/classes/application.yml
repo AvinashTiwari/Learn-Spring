@@ -1,0 +1,26 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: "true"
+    properites:
+      hibernate:
+        dialect: "org.hibernate.dialect.MySQL5Dialect"
+  database:
+    driver.driverClassName: "com.mysql.jdbc.Driver"
+  datasource:
+    url: "jdbc:mysql://localhost:3306/itemsharningdatabase"
+    username: "root"
+    password: "root"
+    testWhileIdle: "true"
+    validationQuery: "Select 1"
+
+security:
+  basic:
+    enabled: false
+
+server:
+  port: 8082
+
+
+
