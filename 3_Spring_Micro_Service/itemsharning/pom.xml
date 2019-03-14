@@ -25,6 +25,8 @@
 
         <module>../itemsharning-userservice</module>
         <module>../itemsharning-itemservice</module>
+        <module>../eurekaserver</module>
+        <module>../temsharning-configserver</module>
 
 
     </modules>
