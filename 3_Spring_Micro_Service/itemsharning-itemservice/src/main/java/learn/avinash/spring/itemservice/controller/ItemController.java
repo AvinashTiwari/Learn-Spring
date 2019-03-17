@@ -60,7 +60,7 @@ public class ItemController {
 
 
     @RequestMapping(value="/user/{username}")
-    public User getUser(@PathVariable String userName) throws IOException {
+    public User getUser(@PathVariable("username") String userName) throws IOException {
 
        return itemService.getUserByUsername(userName);
     }

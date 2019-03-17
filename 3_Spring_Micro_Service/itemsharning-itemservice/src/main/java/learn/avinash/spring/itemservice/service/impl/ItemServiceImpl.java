@@ -1,5 +1,6 @@
 package learn.avinash.spring.itemservice.service.impl;
 
+import learn.avinash.spring.itemservice.client.UserFeignClient;
 import learn.avinash.spring.itemservice.model.Item;
 import learn.avinash.spring.itemservice.model.User;
 import learn.avinash.spring.itemservice.repositry.ItemRepository;
@@ -22,7 +23,8 @@ public class ItemServiceImpl implements ItemService {
     private ItemRepository itemRepository;
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private UserFeignClient userFeignClient;
 
 
     @Override
@@ -87,6 +89,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public User getUserByUsername(String username) {
-        return userService.findByUserName(username);
+        return  userFeignClient.getUserByUsername(username);
+        //return userService.findByUserName(username);
     }
 }
