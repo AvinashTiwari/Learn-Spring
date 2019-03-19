@@ -1,5 +1,7 @@
 package learn.avinash.spring.itemservice.service.impl;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import learn.avinash.spring.itemservice.client.UserFeignClient;
 import learn.avinash.spring.itemservice.model.Item;
 import learn.avinash.spring.itemservice.model.User;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -88,8 +91,34 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    @HystrixCommand( fallbackMethod = "buildFallbackUser",
+       threadPoolKey = "itemByUserThreadPool",
+        threadPoolProperties ={  @HystrixProperty( name="coreSize", value="30"),
+                @HystrixProperty( name="maxQueueSize", value="10")} )
     public User getUserByUsername(String username) {
+        randomlyRunLong();
         return  userFeignClient.getUserByUsername(username);
         //return userService.findByUserName(username);
+    }
+
+    private void randomlyRunLong(){
+        Random rand = new Random();
+        int randomNum = rand.nextInt((3-1) + 1)+1;
+        if(randomNum == 3) sleep();
+    }
+
+    private void sleep(){
+        try {
+            Thread.sleep(11000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private User buildFallbackUser(String username){
+        User user = new User();
+        user.setId(1234L);
+        user.setFirstName("Temp Name");
+        return  user;
     }
 }
