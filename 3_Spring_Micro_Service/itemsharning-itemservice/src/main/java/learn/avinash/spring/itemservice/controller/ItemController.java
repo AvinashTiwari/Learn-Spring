@@ -4,6 +4,8 @@ import learn.avinash.spring.itemservice.model.Item;
 import learn.avinash.spring.itemservice.model.User;
 import learn.avinash.spring.itemservice.service.ItemService;
 import learn.avinash.spring.itemservice.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/item")
 public class ItemController {
+    private static final Logger logger = LoggerFactory.getLogger(ItemController.class);
+
     @Autowired
     private ItemService itemService;
 

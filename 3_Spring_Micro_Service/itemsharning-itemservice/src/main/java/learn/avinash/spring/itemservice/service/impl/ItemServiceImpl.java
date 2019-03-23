@@ -8,6 +8,7 @@ import learn.avinash.spring.itemservice.model.User;
 import learn.avinash.spring.itemservice.repositry.ItemRepository;
 import learn.avinash.spring.itemservice.service.ItemService;
 import learn.avinash.spring.itemservice.service.UserService;
+import learn.avinash.spring.itemservice.util.UserContextHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,7 +97,9 @@ public class ItemServiceImpl implements ItemService {
         threadPoolProperties ={  @HystrixProperty( name="coreSize", value="30"),
                 @HystrixProperty( name="maxQueueSize", value="10")} )
     public User getUserByUsername(String username) {
-        randomlyRunLong();
+        //randomlyRunLong();
+        System.out.println( "Avinash Tiwari " + UserContextHolder.getContext().getCoorelationId());
+        LOG.debug("ItemService.getUserByUsername Correlationid id: {}", UserContextHolder.getContext().getCoorelationId());
         return  userFeignClient.getUserByUsername(username);
         //return userService.findByUserName(username);
     }
