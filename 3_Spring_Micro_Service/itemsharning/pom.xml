@@ -27,7 +27,7 @@
         <module>../itemsharning-itemservice</module>
         <module>../eurekaserver</module>
         <module>../temsharning-configserver</module>
-
+		<module>../itemsharning-zuulserver</module>
 
     </modules>
 
