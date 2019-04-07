@@ -18,7 +18,14 @@ spring:
 security:
   basic:
     enabled: false
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8901/user
 
 server:
   port: 8081
+
+signing:
+  key: anyrandomstring
+
 

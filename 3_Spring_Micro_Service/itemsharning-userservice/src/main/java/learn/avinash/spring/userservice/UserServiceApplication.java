@@ -9,13 +9,23 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.sleuth.Sampler;
+import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @SpringBootApplication
 @EnableEurekaClient
+@EnableResourceServer
 public class UserServiceApplication implements CommandLineRunner {
+    @Bean
+    public Sampler defaultSampler(){
+        return new AlwaysSampler();
+    }
+
     @Autowired
     private UserService userService;
 

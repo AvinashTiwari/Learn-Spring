@@ -28,6 +28,7 @@
         <module>../eurekaserver</module>
         <module>../temsharning-configserver</module>
 		<module>../itemsharning-zuulserver</module>
+        <module>../itemsharning-authroirzation</module>
 
     </modules>
 

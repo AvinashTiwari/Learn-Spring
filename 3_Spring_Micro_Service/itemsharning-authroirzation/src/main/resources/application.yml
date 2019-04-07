@@ -1,0 +1,37 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: "true"
+    properites:
+      hibernate:
+        dialect: "org.hibernate.dialect.MySQL5Dialect"
+  database:
+    driver.driverClassName: "com.mysql.jdbc.Driver"
+  datasource:
+    url: "jdbc:mysql://localhost:3306/itemsharningdatabase"
+    username: "root"
+    password: "root"
+    testWhileIdle: "true"
+    validationQuery: "Select 1"
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:8901/user
+
+server:
+  port: 8901
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+
+signing:
+  key: anyrandomstring

@@ -3,6 +3,7 @@ package learn.avinash.spring.itemservice.service.impl;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import learn.avinash.spring.itemservice.client.UserFeignClient;
+import learn.avinash.spring.itemservice.client.UserRestTemplateClient;
 import learn.avinash.spring.itemservice.model.Item;
 import learn.avinash.spring.itemservice.model.User;
 import learn.avinash.spring.itemservice.repositry.ItemRepository;
@@ -29,7 +30,8 @@ public class ItemServiceImpl implements ItemService {
     private UserService userService;
     @Autowired
     private UserFeignClient userFeignClient;
-
+    @Autowired
+    private UserRestTemplateClient userRestTemplateClient;
 
     @Override
     public Item addItembyUser(Item item, String username) {
@@ -98,10 +100,10 @@ public class ItemServiceImpl implements ItemService {
                 @HystrixProperty( name="maxQueueSize", value="10")} )
     public User getUserByUsername(String username) {
         //randomlyRunLong();
-        System.out.println( "Avinash Tiwari " + UserContextHolder.getContext().getCoorelationId());
-        LOG.debug("ItemService.getUserByUsername Correlationid id: {}", UserContextHolder.getContext().getCoorelationId());
-        return  userFeignClient.getUserByUsername(username);
-        //return userService.findByUserName(username);
+        LOG.debug("ItemService.getUserByUsername Correlation id: {}", UserContextHolder.getContext().getCoorelationId());
+
+//		return userFeignClient.getUserByUsername(username);
+        return userRestTemplateClient.getUser(username);
     }
 
     private void randomlyRunLong(){

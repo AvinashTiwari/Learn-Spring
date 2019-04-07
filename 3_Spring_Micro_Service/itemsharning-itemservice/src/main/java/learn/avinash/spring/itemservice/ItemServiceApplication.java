@@ -11,6 +11,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.oauth2.client.OAuth2ClientContext;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 
 import java.util.Date;
 
@@ -27,6 +31,14 @@ public class ItemServiceApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(ItemServiceApplication.class, args);
+    }
+
+
+    @Bean
+    public OAuth2RestTemplate oAuth2RestTeamplate(OAuth2ClientContext oAuth2ClientContext,
+                                                  OAuth2ProtectedResourceDetails oAuth2ProtectedResourceDetails
+                                                  ){
+        return  new OAuth2RestTemplate(oAuth2ProtectedResourceDetails,oAuth2ClientContext);
     }
 
     @Override
