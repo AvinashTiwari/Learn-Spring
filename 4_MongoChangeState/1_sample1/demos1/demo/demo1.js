@@ -4,7 +4,7 @@ const common = require('./common');
 (async function(){
     const collection = await common.getCollection('demo1');
    try{
-    const cusrsor = await collection.aggregate([{$changeStream:{}}])
+    const cusrsor = await collection.aggregate([{$changeStream:{fullDocument:'updateLookup'}}])
 
    while(await cusrsor.hasNext()){
        const doc = await cusrsor.next()

@@ -23,3 +23,43 @@ r1:SECONDARY>
 r1:PRIMARY> db.demo.insert({x:1})
 WriteResult({ "nInserted" : 1 })
 r1:PRIMARY>
+
+=======================
+
+r1:PRIMARY> db.demo1.update({}, {$set:{x:1}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 0 })
+r1:PRIMARY> db.demo1.update({}, {$set:{x:1}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 0 })
+r1:PRIMARY> db.demo1.update({}, {$set:{x:2}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+r1:PRIMARY> db.demo1.insert({_id: 123, name: 'waldo' })
+WriteResult({ "nInserted" : 1 })
+r1:PRIMARY> db.demo1.update({_id:123})
+2019-05-06T22:12:39.495-0600 E QUERY    [js] Error: need an object :
+DBCollection.prototype._parseUpdate@src/mongo/shell/collection.js:452:1
+DBCollection.prototype.update@src/mongo/shell/collection.js:494:18
+@(shell):1:1
+r1:PRIMARY> db.demo1.update({_id:123}, {justme:true})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+r1:PRIMARY> db.demo1.find({justMe:true})
+r1:PRIMARY> db.demo1.find({justme:true})
+{ "_id" : 123, "justme" : true }
+r1:PRIMARY> db.demo1.find({justme:true})
+{ "_id" : 123, "justme" : true }
+r1:PRIMARY> db.demo1.update({_id:123}, {$set:{justme: true}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 0 })
+r1:PRIMARY> db.demo1.update({_id:456},{$inc:{counter:1}}, {upsert:true})
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : 456 })
+r1:PRIMARY> db.demo1.update({_id:456},{$inc:{counter:1}}, {upsert:true})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+r1:PRIMARY> db.demo1.remove({ counter: {$gte:0}})
+WriteResult({ "nRemoved" : 1 })
+r1:PRIMARY> db.demo1.insert({deleteMe:true})
+WriteResult({ "nInserted" : 1 })
+r1:PRIMARY> db.demo1.insert({deleteMe:true})
+WriteResult({ "nInserted" : 1 })
+r1:PRIMARY> db.demo1.insert({deleteMe:true})
+WriteResult({ "nInserted" : 1 })
+r1:PRIMARY> db.demo1.remove({deleteMe:true})
+WriteResult({ "nRemoved" : 3 })
+r1:PRIMARY> rs.initiate()
