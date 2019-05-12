@@ -4,6 +4,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../2_Transform_To_Microservice/rolling-stone-ecommerce-product-api/pom.xml" />
       </list>
     </option>
   </component>

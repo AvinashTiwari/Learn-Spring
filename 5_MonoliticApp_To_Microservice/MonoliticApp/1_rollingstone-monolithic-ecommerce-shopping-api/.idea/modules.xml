@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../2_Transform_To_Microservice/rolling-stone-ecommerce-product-api/rolling-stone-ecommerce-product-api.iml" filepath="$PROJECT_DIR$/../2_Transform_To_Microservice/rolling-stone-ecommerce-product-api/rolling-stone-ecommerce-product-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/rollingstone-monolithic-ecommerce-shopping-api.iml" filepath="$PROJECT_DIR$/rollingstone-monolithic-ecommerce-shopping-api.iml" />
     </modules>
   </component>
