@@ -1,6 +1,7 @@
 package learn.avinash.spring.rollingstoneecommerceproductapi.service;
 
 
+import learn.avinash.spring.rollingstoneecommerceproductapi.dao.ProductDaoRepository;
 import learn.avinash.spring.rollingstoneecommerceproductapi.model.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,21 +10,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-@Transactional(readOnly = true)
 public class ProductServiceImpl implements ProductService {
 
 	  final static Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 
    @Autowired
-   private ProductDao productDao;
+   private ProductDaoRepository productDao;
    
   
 
-   @Transactional
    @Override
-   public long save(Product product) {
+   public Product save(Product product) {
 	   
 	   if (product.getCategory() == null) {
 		   logger.info("Product Category is null :");
@@ -47,8 +47,8 @@ public class ProductServiceImpl implements ProductService {
    }
 
    @Override
-   public Product get(long id) {
-      return productDao.get(id);
+   public Optional<Product> get(long id) {
+      return productDao.findById(id);
    }
 
    @Override
@@ -56,13 +56,11 @@ public class ProductServiceImpl implements ProductService {
       return productDao.list();
    }
 
-   @Transactional
    @Override
    public void update(long id, Product product) {
       productDao.update(id, product);
    }
 
-   @Transactional
    @Override
    public void delete(long id) {
       productDao.delete(id);

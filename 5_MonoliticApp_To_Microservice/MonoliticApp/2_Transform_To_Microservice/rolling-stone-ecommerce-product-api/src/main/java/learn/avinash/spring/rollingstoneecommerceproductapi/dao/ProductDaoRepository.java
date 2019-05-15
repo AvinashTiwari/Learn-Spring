@@ -5,6 +5,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
-public interface ProductDaoRepository extends PagingAndSortingRepository {
+public interface ProductDaoRepository extends PagingAndSortingRepository<Product,Long> {
     List<Product> findAll();
 }
