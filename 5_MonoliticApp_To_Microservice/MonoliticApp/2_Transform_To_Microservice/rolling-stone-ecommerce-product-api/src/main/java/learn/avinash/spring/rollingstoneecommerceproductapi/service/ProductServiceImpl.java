@@ -6,6 +6,10 @@ import learn.avinash.spring.rollingstoneecommerceproductapi.model.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,18 +56,20 @@ public class ProductServiceImpl implements ProductService {
    }
 
    @Override
-   public List<Product> list() {
-      return productDao.list();
+   public Page<Product> getProductsByPage(Integer pageNumber, Integer pageSize){
+       Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("productCode").descending());
+       return productDao.findAll(pageable);
+
    }
 
    @Override
    public void update(long id, Product product) {
-      productDao.update(id, product);
+      productDao.save( product);
    }
 
    @Override
    public void delete(long id) {
-      productDao.delete(id);
+      productDao.deleteById(id);
    }
 
 }
