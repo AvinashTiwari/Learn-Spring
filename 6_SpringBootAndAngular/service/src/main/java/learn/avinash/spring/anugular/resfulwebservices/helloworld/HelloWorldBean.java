@@ -1,4 +1,4 @@
-package learn.avinash.spring.anugular.resfulwebservices;
+package learn.avinash.spring.anugular.resfulwebservices.helloworld;
 
 public class HelloWorldBean {
     private  String message;

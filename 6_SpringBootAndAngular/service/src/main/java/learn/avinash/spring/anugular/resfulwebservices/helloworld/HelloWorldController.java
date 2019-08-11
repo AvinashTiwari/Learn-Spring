@@ -1,4 +1,4 @@
-package learn.avinash.spring.anugular.resfulwebservices;
+package learn.avinash.spring.anugular.resfulwebservices.helloworld;
 
 import org.springframework.web.bind.annotation.*;
 
