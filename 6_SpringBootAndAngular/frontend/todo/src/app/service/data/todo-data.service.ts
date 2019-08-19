@@ -12,4 +12,8 @@ export class TodoDataService {
     return this.http.get<Todo[]>(`http://localhost:8080/users/${username}/todos`)
     //console.log("Execute hello World Service");
   }
+
+  deleteTodo(username, id){
+    return this.http.delete<Todo[]>(`http://localhost:8080/users/${username}/todos/${id}`)
+  }
 }

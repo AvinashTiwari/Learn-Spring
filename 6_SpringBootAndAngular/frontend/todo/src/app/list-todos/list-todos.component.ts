@@ -19,27 +19,33 @@ export class Todo{
 })
 export class ListTodosComponent implements OnInit {
 
-  todos :Todo[]//[
-    //new Todo(1,'Learn to Dance',false, new Date()),
-    //new Todo(2,'Expert',false, new Date()),
-    //new Todo(3,'vist UK, Europe',false, new Date())
-//  ]
- // todo ={
-  //  id: 1,
-   // description: 'Learn to Dance'
-
-  //}
+  todos :Todo[]
+  messsage: string
 
   constructor(private todoService: TodoDataService) { }
 
   ngOnInit() {
-     this.todoService.retriveAllTodos('Avinash').subscribe(
+    this.refreshTodos();
+  }
+
+  refreshTodos(){
+    this.todoService.retriveAllTodos('Avinash').subscribe(
 
       response =>{
         console.log(response);
         this.todos = response;
       }
      )
+  }
+
+  deleteTodo(id){
+    this.todoService.deleteTodo('avinash',id).subscribe(
+      response => {
+        console.log(response);
+        this.refreshTodos();
+        this.messsage = `Delete Successful ${id}`
+      }
+    )
   }
 
 }
