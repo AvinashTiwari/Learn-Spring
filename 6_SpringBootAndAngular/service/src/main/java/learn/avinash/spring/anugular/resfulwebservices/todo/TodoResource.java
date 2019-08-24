@@ -29,4 +29,10 @@ public class TodoResource {
 
         return  ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/users/{username}/todos/{id}")
+    public Todo getTodos(@PathVariable  String username, @PathVariable long id){
+
+        return  todoService.findBId(id);
+    }
 }
