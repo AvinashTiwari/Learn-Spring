@@ -1,8 +1,11 @@
 package learn.avinash.spring.anugular.resfulwebservices.todo;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.xml.ws.Response;
 import java.util.List;
@@ -35,4 +38,21 @@ public class TodoResource {
 
         return  todoService.findBId(id);
     }
+    @PutMapping("/users/{username}/todos/{id}")
+    public ResponseEntity<Todo> UpdateTodo(@PathVariable  String username, @PathVariable long id, @RequestBody Todo todo){
+
+        Todo todoUpdate = todoService.save(todo);
+        return  new ResponseEntity<Todo>(todo, HttpStatus.OK);
+    }
+
+
+    @PostMapping("/users/{username}/todos")
+    public ResponseEntity<Void> UpdateTodo(@PathVariable  String username,  @RequestBody Todo todo){
+
+        Todo createdTodo = todoService.save(todo);
+
+        return  ResponseEntity.created( ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdTodo.getId()).toUri()).build();
+    }
+
+
 }
