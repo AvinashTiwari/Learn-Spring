@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.service.type: nodeport
+    kompose.version: 1.18.0 (06a2e56)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: message-queue
+  name: message-queue
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: message-queue
+    spec:
+      containers:
+      - env:
+        - name: ENABLE_JMX_EXPORTER
+          value: "true"
+        image: vromero/activemq-artemis:2.6.1
+        name: message-queue
+        ports:
+        - containerPort: 8161
+        resources:
+          limits:
+            memory: "671088640"
+          requests:
+            memory: "671088640"
+      restartPolicy: Always
+status: {}

@@ -12,6 +12,15 @@ services:
       - postgress-db
     networks:
       - jee8net
+    labels:
+      kompose.service.type: loadbalancer
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 640M
+        reservations:
+          memory: 640M
   message-queue:
     image: vromero/activemq-artemis:2.6.1
     environment:
@@ -24,6 +33,15 @@ services:
       - "8161:8161"
     networks:
       - jee8net
+    labels:
+      kompose.service.type: nodeport
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 640M
+        reservations:
+          memory: 640M
   postgress-db:
     image: "postgres:9.6.3"
     environment:
@@ -33,6 +51,15 @@ services:
       - "5432:5432"
     networks:
       - jee8net
+    labels:
+      kompose.service.type: nodeport
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 128M
 networks:
   jee8net:
     driver: bridge

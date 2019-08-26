@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.service.type: nodeport
+    kompose.version: 1.18.0 (06a2e56)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: postgress-db
+  name: postgress-db
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: postgress-db
+    spec:
+      containers:
+      - env:
+        - name: POSTGRES_PASSWORD
+          value: 12qwasyx
+        - name: POSTGRES_USER
+          value: javaee8
+        image: postgres:9.6.3
+        name: postgress-db
+        ports:
+        - containerPort: 5432
+        resources:
+          limits:
+            memory: "134217728"
+          requests:
+            memory: "134217728"
+      restartPolicy: Always
+status: {}

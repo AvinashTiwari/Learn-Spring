@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.service.type: nodeport
+    kompose.version: 1.18.0 (06a2e56)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: message-queue
+  name: message-queue
+spec:
+  ports:
+  - name: "8161"
+    port: 8161
+    targetPort: 8161
+  selector:
+    io.kompose.service: message-queue
+  type: NodePort
+status:
+  loadBalancer: {}
