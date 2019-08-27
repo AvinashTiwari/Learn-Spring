@@ -1,0 +1,4 @@
+rootProject.name = 'javaee8-microservice'
+includeFlat 'version-sample'
+includeFlat 'javaee-tolerant-reader-pattern'
+
