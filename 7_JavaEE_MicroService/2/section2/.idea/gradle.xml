@@ -8,6 +8,7 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
+            <option value="$PROJECT_DIR$/../building-message-driven" />
             <option value="$PROJECT_DIR$/../javaee-tolerant-reader-pattern" />
             <option value="$PROJECT_DIR$/../microprofile-fault-tolerant" />
             <option value="$PROJECT_DIR$" />

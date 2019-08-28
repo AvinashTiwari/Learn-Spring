@@ -4,4 +4,5 @@ includeFlat 'javaee-tolerant-reader-pattern'
 includeFlat 'microprofile-fault-tolerant'
 include '../../api-documentation'
 findProject(':../../api-documentation')?.name = 'api-documentation'
+includeFlat 'building-message-driven'
 

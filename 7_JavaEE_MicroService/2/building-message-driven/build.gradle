@@ -1,0 +1,31 @@
+plugins {
+    id 'war'
+}
+
+group 'learn.avinash.javaee'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+configurations {
+    activemq {
+        description = "Active MQ dependencies"
+        transitive = true
+    }
+}
+
+dependencies {
+    providedCompile 'javax:javaee-api:8.0'
+
+    activemq 'org.apache.activemq:activemq-rar:5.15.6@rar'
+}
+
+task copyActiveMqLibs(type: Copy) {
+    from configurations.activemq
+    into "$buildDir/activemq"
+}
+
+assemble.dependsOn copyActiveMqLibs
