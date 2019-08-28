@@ -9,8 +9,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/../javaee-tolerant-reader-pattern" />
+            <option value="$PROJECT_DIR$/../microprofile-fault-tolerant" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/../version-sample" />
+            <option value="$PROJECT_DIR$/../../api-documentation" />
           </set>
         </option>
         <option name="useAutoImport" value="true" />
