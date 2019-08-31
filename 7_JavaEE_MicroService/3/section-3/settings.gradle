@@ -1,0 +1,4 @@
+rootProject.name = 'section-3'
+includeFlat '1-multi-cource-config'
+includeFlat '2-handling-secret'
+
