@@ -1,0 +1,8 @@
+java -jar spring-cloud-skipper-server-2.1.2.RELEASE.jar
+
+java -jar spring-cloud-dataflow-server-2.2.1.RELEASE.jar
+
+java -jar spring-cloud-dataflow-shell-2.2.1.RELEASE.jar
+
+https://dataflow.spring.io/Elston-GA-task-applications-maven
+
