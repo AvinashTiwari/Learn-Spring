@@ -1,0 +1,16 @@
+
+app import --uri https://dataflow.spring.io/rabbitmq-maven-latest
+
+app register --type sink --name myTimeSink --uri maven://learn.avinash.customtask:MySpringCloudSink:0.0.1-SNAPSHOT
+
+
+
+stream create --name myTimeSinkStream --definition "http  --port=9090 | myTimeSink" --deploy
+
+http post --target http://localhost:9090 --data 24-Jun-1980
+
+
+stream destroy --name myTimeSinkStream
+
+
+app unregister --name myTimeSink --type source

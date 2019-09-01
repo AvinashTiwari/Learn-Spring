@@ -1,0 +1,15 @@
+
+mvn clean package
+
+mvn install
+
+
+app import --uri https://dataflow.spring.io/rabbitmq-maven-latest
+
+app register --type source --name myTimeSource --uri maven://learn.avinash.customtask:MySpringCloudSource:0.0.1-SNAPSHOT
+
+stream create --name myTimeSourceStream --definition "myTimeSource | log" --deploy
+
+stream destroy --name myTimeSourceStream
+
+app unregister --name myTimeSource --type source

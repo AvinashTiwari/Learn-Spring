@@ -7,13 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="system-logging" />
-        <module name="spring-cloud-processor" />
+        <module name="my-spring-cloud-sink" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="custom-task" options="-parameters" />
+      <module name="my-spring-cloud-sink" options="-parameters" />
+      <module name="my-spring-cloud-source" options="-parameters" />
       <module name="spring-cloud-processor" options="-parameters" />
       <module name="system-logging" options="-parameters" />
     </option>
