@@ -1,0 +1,6 @@
+rootProject.name = 'dist-log-tracing'
+includeFlat 'logging'
+includeFlat 'logging-mertics'
+includeFlat 'health-service'
+includeFlat 'open-tracing'
+

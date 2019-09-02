@@ -1,0 +1,24 @@
+plugins {
+    id 'war'
+}
+
+group 'learn.avinash.j2ee'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile 'javax:javaee-api:8.0'
+
+    compile 'org.slf4j:slf4j-api:1.7.25'
+
+    runtime 'org.slf4j:slf4j-jdk14:1.7.25'
+    runtime 'org.slf4j:log4j-over-slf4j:1.7.25'
+    runtime 'org.slf4j:jcl-over-slf4j:1.7.25'
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+}

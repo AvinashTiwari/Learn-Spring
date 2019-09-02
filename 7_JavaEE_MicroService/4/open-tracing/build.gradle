@@ -1,0 +1,22 @@
+plugins {
+    id 'war'
+}
+
+group 'learn.avinash.j2ee'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile 'javax:javaee-api:8.0'
+
+    providedCompile 'org.eclipse.microprofile.opentracing:microprofile-opentracing-api:1.1'
+    providedCompile 'io.opentracing:opentracing-api:0.31.0'
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+
+}
