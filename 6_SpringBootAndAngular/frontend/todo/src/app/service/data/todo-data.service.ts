@@ -9,23 +9,23 @@ export class TodoDataService {
   constructor(private http: HttpClient) { }
 
   retriveAllTodos(username){
-    return this.http.get<Todo[]>(`http://localhost:8080/users/${username}/todos`)
+    return this.http.get<Todo[]>(`http://localhost:8081/users/${username}/todos`)
     //console.log("Execute hello World Service");
   }
 
   deleteTodo(username, id){
-    return this.http.delete<Todo[]>(`http://localhost:8080/users/${username}/todos/${id}`)
+    return this.http.delete<Todo[]>(`http://localhost:8081/users/${username}/todos/${id}`)
   }
 
   retriveTodo(username, id){
-    return this.http.get<Todo>(`http://localhost:8080/users/${username}/todos/${id}`)
+    return this.http.get<Todo>(`http://localhost:8081/users/${username}/todos/${id}`)
   }
 
   updateTodo(username, id, todo){
-    return this.http.put(`http://localhost:8080/users/${username}/todos/${id}`,todo)
+    return this.http.put(`http://localhost:8081/users/${username}/todos/${id}`,todo)
   }
 
   createTodo(username,  todo){
-    return this.http.post(`http://localhost:8080/users/${username}/todos`,todo)
+    return this.http.post(`http://localhost:8081/users/${username}/todos`,todo)
   }
 }
