@@ -1,9 +1,9 @@
 package learn.avinash.spring.anugular.resfulwebservices.basic;
 
-public class AuthenticationBeam {
+public class AuthenticationBean {
     private  String message;
 
-    public AuthenticationBeam(String message) {
+    public AuthenticationBean(String message) {
         this.message = message;
     }
 
