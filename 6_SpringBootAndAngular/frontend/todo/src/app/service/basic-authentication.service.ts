@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 import { HelloWorldBean } from './data/welcome-data.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import { API_URL } from '../app.constants';
+
+export const TOKEN='token';
+export const AUTHENTICATED_USER='authenticatedUser';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,33 +14,31 @@ export class BasicAuthenticationService {
 
   constructor(private http: HttpClient) { }
 
-  authenticate(username, password){
-    //console.log("Before " + this.isUserLoggedin())
-    
-    if(username === 'Avinash' && password === 'dummy'){
-      sessionStorage.setItem('authenticatedUser', username)
 
-      //console.log("After " + this.isUserLoggedin())
-      return true;
-
-    }
-
-    console.log("After " + this.isUserLoggedin())
-
-    return false;
-  }
 
   isUserLoggedin(){
-    let user = sessionStorage.getItem('authenticatedUser')
+    let user = sessionStorage.getItem(AUTHENTICATED_USER)
     return !(user === null)
   }
 
   logOut(){
-    sessionStorage.removeItem('authenticatedUser')
+    sessionStorage.removeItem(AUTHENTICATED_USER)
+    sessionStorage.removeItem(TOKEN)
+
   }
 
-
+  getAuthenticatedUser(){
+    let user = sessionStorage.getItem(AUTHENTICATED_USER)
+    return user;
+  }
  
+  getAuthenticatedToken(){
+    if(this.getAuthenticatedUser()){
+    let token = sessionStorage.getItem(TOKEN)
+    return token;
+    }
+    
+  }
 
   executeAuthenticationService(username, password){
  
@@ -44,9 +47,11 @@ export class BasicAuthenticationService {
     let headers = new HttpHeaders({
       Authorization: basicAuthHeader
     })
-    return this.http.get<AuthenticationBean>(`http://localhost:8081/basicauth`, {headers}).pipe(map(
+    return this.http.get<AuthenticationBean>(`${API_URL}/basicauth`, {headers}).pipe(map(
       data => {
-        sessionStorage.setItem('authenticatedUser', username)
+        sessionStorage.setItem(AUTHENTICATED_USER, username)
+        sessionStorage.setItem(TOKEN, basicAuthHeader)
+
         return data;
       }
     ))
