@@ -1,4 +1,4 @@
-package learn.avinash.spring.anugular.resfulwebservices.basic;
+package learn.avinash.spring.basic;
 
 public class AuthenticationBean {
     private  String message;

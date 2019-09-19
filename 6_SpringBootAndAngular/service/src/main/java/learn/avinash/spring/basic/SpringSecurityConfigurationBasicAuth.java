@@ -1,4 +1,4 @@
-package learn.avinash.spring.anugular.resfulwebservices.basic;
+package learn.avinash.spring.basic;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
