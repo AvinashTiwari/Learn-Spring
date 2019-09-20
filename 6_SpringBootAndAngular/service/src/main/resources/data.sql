@@ -1,8 +1,8 @@
-insert into todo(id, username,description,target_date,is_done)
-values(10001, 'in28minutes', 'Learn JPA', sysdate(), false);
+/*insert into todo(id, username,description,target_date,is_done)
+values(10001, 'avinash', 'Learn JPA', '04-13-20019', 0);
 
 insert into todo(id, username,description,target_date,is_done)
-values(10002, 'in28minutes', 'Learn Data JPA', sysdate(), false);
+values(10002, 'avinash', 'Learn Data JPA', '04-13-20019', 0);
 
 insert into todo(id, username,description,target_date,is_done)
-values(10003, 'in28minutes', 'Learn Microservices', sysdate(), false);
+values(10003, 'avinash', 'Learn Microservices', '04-13-20019', 0);*/
