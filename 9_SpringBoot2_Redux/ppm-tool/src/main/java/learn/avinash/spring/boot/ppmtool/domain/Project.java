@@ -9,8 +9,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
-public class Project
-{
+public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,9 +27,14 @@ public class Project
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date end_date;
     @JsonFormat(pattern = "yyyy-mm-dd")
+    @Column(updatable = false)
     private Date created_At;
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updated_At;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project")
+    //
+    private Backlog backlog;
 
     public Project() {
     }
@@ -99,6 +103,14 @@ public class Project
         this.updated_At = updated_At;
     }
 
+    public Backlog getBacklog() {
+        return backlog;
+    }
+
+    public void setBacklog(Backlog backlog) {
+        this.backlog = backlog;
+    }
+
     @PrePersist
     protected void onCreate(){
         this.created_At = new Date();
@@ -108,4 +120,5 @@ public class Project
     protected void onUpdate(){
         this.updated_At = new Date();
     }
+
 }

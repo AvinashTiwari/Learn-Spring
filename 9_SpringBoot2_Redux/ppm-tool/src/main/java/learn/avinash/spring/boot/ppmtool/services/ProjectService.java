@@ -1,7 +1,9 @@
 package learn.avinash.spring.boot.ppmtool.services;
 
+import learn.avinash.spring.boot.ppmtool.domain.Backlog;
 import learn.avinash.spring.boot.ppmtool.domain.Project;
 import learn.avinash.spring.boot.ppmtool.exceptions.ProjectIdException;
+import learn.avinash.spring.boot.ppmtool.repositories.BacklogRepository;
 import learn.avinash.spring.boot.ppmtool.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,15 +14,32 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
-    public Project saveOrUpdateProject(Project project){
+    @Autowired
+    private BacklogRepository backlogRepository;
 
+    public Project saveOrUpdateProject(Project project){
         try{
             project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+
+            if(project.getId()==null){
+                Backlog backlog = new Backlog();
+                project.setBacklog(backlog);
+                backlog.setProject(project);
+                backlog.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+            }
+
+            if(project.getId()!=null){
+                project.setBacklog(backlogRepository.findByProjectIdentifier(project.getProjectIdentifier().toUpperCase()));
+            }
+
             return projectRepository.save(project);
+
         }catch (Exception e){
             throw new ProjectIdException("Project ID '"+project.getProjectIdentifier().toUpperCase()+"' already exists");
         }
+
     }
+
 
     public Project findProjectByIdentifier(String projectId){
 
@@ -39,6 +58,7 @@ public class ProjectService {
         return projectRepository.findAll();
     }
 
+
     public void deleteProjectByIdentifier(String projectid){
         Project project = projectRepository.findByProjectIdentifier(projectid.toUpperCase());
 
@@ -48,6 +68,5 @@ public class ProjectService {
 
         projectRepository.delete(project);
     }
-
 
 }
