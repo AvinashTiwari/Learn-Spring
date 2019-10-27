@@ -1,7 +1,8 @@
 package learn.avinash.spring.boot.ppmtool.security;
 
-import io.agileintelligence.ppmtool.domain.User;
-import io.agileintelligence.ppmtool.services.CustomUserDetailsService;
+
+import learn.avinash.spring.boot.ppmtool.domain.User;
+import learn.avinash.spring.boot.ppmtool.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,8 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
 
-import static io.agileintelligence.ppmtool.security.SecurityConstants.HEADER_STRING;
-import static io.agileintelligence.ppmtool.security.SecurityConstants.TOKEN_PREFIX;
+import static learn.avinash.spring.boot.ppmtool.security.SecurityConstants.HEADER_STRING;
+import static learn.avinash.spring.boot.ppmtool.security.SecurityConstants.TOKEN_PREFIX;
+
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 

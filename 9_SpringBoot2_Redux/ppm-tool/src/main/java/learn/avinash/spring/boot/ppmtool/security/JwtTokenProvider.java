@@ -1,7 +1,8 @@
 package learn.avinash.spring.boot.ppmtool.security;
 
-import io.agileintelligence.ppmtool.domain.User;
+
 import io.jsonwebtoken.*;
+import learn.avinash.spring.boot.ppmtool.domain.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
@@ -9,8 +10,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static io.agileintelligence.ppmtool.security.SecurityConstants.EXPIRATION_TIME;
-import static io.agileintelligence.ppmtool.security.SecurityConstants.SECRET;
+import static learn.avinash.spring.boot.ppmtool.security.SecurityConstants.EXPIRATION_TIME;
+import static learn.avinash.spring.boot.ppmtool.security.SecurityConstants.SECRET;
+
 
 @Component
 public class JwtTokenProvider {

@@ -1,6 +1,7 @@
 package learn.avinash.spring.boot.ppmtool.security;
 
-import io.agileintelligence.ppmtool.services.CustomUserDetailsService;
+
+import learn.avinash.spring.boot.ppmtool.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +16,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static io.agileintelligence.ppmtool.security.SecurityConstants.H2_URL;
-import static io.agileintelligence.ppmtool.security.SecurityConstants.SIGN_UP_URLS;
+import static learn.avinash.spring.boot.ppmtool.security.SecurityConstants.*;
+
 
 @Configuration
 @EnableWebSecurity
