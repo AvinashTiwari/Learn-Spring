@@ -1,10 +1,12 @@
 package learn.avinash.spring.msscbrewy.services;
 
 import learn.avinash.spring.msscbrewy.web.model.BeerDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Slf4j
 @Service
 public class BeerServiceImpl implements BeerService {
     @Override
@@ -21,5 +23,16 @@ public class BeerServiceImpl implements BeerService {
                 .beerName(beerDTO.getBeerName())
                 .beerStyle(beerDTO.getBeerStyle())
                 .build();
+    }
+
+    @Override
+    public void updateBeer(UUID beerId, BeerDTO beerDTO) {
+
+
+    }
+
+    @Override
+    public void deleteById(UUID beerId) {
+     log.debug("Deleting Beer..");
     }
 }
