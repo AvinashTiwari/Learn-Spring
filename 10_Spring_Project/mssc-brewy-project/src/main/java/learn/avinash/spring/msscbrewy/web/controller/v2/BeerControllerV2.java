@@ -1,36 +1,36 @@
-package learn.avinash.spring.msscbrewy.web.controller;
+package learn.avinash.spring.msscbrewy.web.controller.v2;
 
 import learn.avinash.spring.msscbrewy.services.BeerService;
+import learn.avinash.spring.msscbrewy.services.v2.BeerServiceV2;
 import learn.avinash.spring.msscbrewy.web.model.BeerDTO;
+import learn.avinash.spring.msscbrewy.web.model.v2.BeerDTOV2;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.net.ssl.HttpsURLConnection;
 import java.util.UUID;
 
-@Deprecated
-@RequestMapping("/api/v1/beer")
+@RequestMapping("/api/v2/beer")
 @RestController
-public class BeerController {
+public class BeerControllerV2 {
 
-    private final BeerService beerService;
+    private final BeerServiceV2 beerService;
 
-    public BeerController(BeerService beerService) {
+    public BeerControllerV2(BeerServiceV2 beerService) {
         this.beerService = beerService;
     }
 
     @GetMapping("/{beerId}")
-    public ResponseEntity<BeerDTO> getBeer(@PathVariable UUID beerId){
+    public ResponseEntity<BeerDTOV2> getBeer(@PathVariable UUID beerId){
 
         return new ResponseEntity<>(beerService.getBeerById(beerId), HttpStatus.OK);
 
     }
 
     @PostMapping
-    public ResponseEntity handlePost(BeerDTO beerDTO){
-        BeerDTO saveDto = beerService.saveNewBeer(beerDTO);
+    public ResponseEntity handlePost(BeerDTOV2 beerDTO){
+        BeerDTOV2 saveDto = beerService.saveNewBeer(beerDTO);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Location","http://localhost:8080/api/v1/beer/"+ saveDto.getId().toString());
         return  new ResponseEntity(headers, HttpStatus.CREATED);
@@ -38,7 +38,7 @@ public class BeerController {
     }
 
     @PutMapping("/{beerId}")
-    public ResponseEntity handleUpdate(@PathVariable UUID beerId,BeerDTO beerDTO){
+    public ResponseEntity handleUpdate(@PathVariable UUID beerId,BeerDTOV2 beerDTO){
          beerService.updateBeer(beerId,beerDTO);
 
         return  new ResponseEntity( HttpStatus.NO_CONTENT);
