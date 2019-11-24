@@ -5,6 +5,7 @@ import learn.avinsh.spring.mssc.beer.service.web.model.BeerDto;
 import learn.avinsh.spring.mssc.beer.service.web.model.BeerPagedList;
 import learn.avinsh.spring.mssc.beer.service.web.model.BeerStyleEnum;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
