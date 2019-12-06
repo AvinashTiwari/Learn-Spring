@@ -11,9 +11,7 @@ import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsAsyncClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * Created by jt on 2019-08-07.
- */
+
 //@Component
 public class NIORestTemplateCustomizer implements RestTemplateCustomizer {
 
