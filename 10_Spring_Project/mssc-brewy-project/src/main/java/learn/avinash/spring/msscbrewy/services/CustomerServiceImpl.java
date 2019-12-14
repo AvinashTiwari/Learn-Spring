@@ -1,7 +1,6 @@
 package learn.avinash.spring.msscbrewy.services;
 
-import learn.avinash.spring.msscbrewy.web.model.BeerDTO;
-import learn.avinash.spring.msscbrewy.web.model.CustomerDTO;
+import learn.avinash.spring.msscbrewy.web.model.CustomerDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -10,21 +9,21 @@ import java.util.UUID;
 @Service
 public class CustomerServiceImpl implements CustomerService {
     @Override
-    public CustomerDTO getCustomerbyId(UUID customerId) {
-        return CustomerDTO.builder().id(UUID.randomUUID())
+    public CustomerDto getCustomerById(UUID customerId) {
+        return CustomerDto.builder().id(UUID.randomUUID())
                 .name("Avinash")
                 .build();
     }
 
     @Override
-    public CustomerDTO saveNewCustomer(CustomerDTO customerDTO) {
-        return CustomerDTO.builder().id(UUID.randomUUID())
+    public CustomerDto saveNewCustomer(CustomerDto customerDTO) {
+        return CustomerDto.builder().id(UUID.randomUUID())
                 .name("Avinash")
                 .build();
     }
 
     @Override
-    public void updateCustomer(UUID beerId, CustomerDTO customerDTO) {
+    public void updateCustomer(UUID beerId, CustomerDto customerDTO) {
 
     }
 

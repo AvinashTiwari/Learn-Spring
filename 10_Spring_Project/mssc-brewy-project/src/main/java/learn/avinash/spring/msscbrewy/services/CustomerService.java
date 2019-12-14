@@ -1,15 +1,15 @@
 package learn.avinash.spring.msscbrewy.services;
 
-import learn.avinash.spring.msscbrewy.web.model.CustomerDTO;
+import learn.avinash.spring.msscbrewy.web.model.CustomerDto;
 
 import java.util.UUID;
 
 public interface CustomerService {
-    CustomerDTO getCustomerbyId(UUID customerId);
+    CustomerDto getCustomerById(UUID customerId);
 
-    CustomerDTO saveNewCustomer(CustomerDTO customerDTO);
+    CustomerDto saveNewCustomer(CustomerDto customerDTO);
 
-    void updateCustomer(UUID beerId, CustomerDTO customerDTO);
+    void updateCustomer(UUID beerId, CustomerDto customerDTO);
 
     void deleteById(UUID customerId);
 }
