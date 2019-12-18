@@ -1,17 +1,17 @@
 package learn.avinash.spring.msscbrewy.services.v2;
 
 import learn.avinash.spring.msscbrewy.web.model.BeerDTO;
-import learn.avinash.spring.msscbrewy.web.model.v2.BeerDTOV2;
+import learn.avinash.spring.msscbrewy.web.model.v2.BeerDtoV2;
 
 import java.util.UUID;
 
 public interface BeerServiceV2 {
 
-    BeerDTOV2 getBeerById(UUID beerId);
+    BeerDtoV2 getBeerById(UUID beerId);
 
-    BeerDTOV2 saveNewBeer(BeerDTOV2 beerDTO);
+    BeerDtoV2 saveNewBeer(BeerDtoV2 beerDTO);
 
-    void updateBeer(UUID beerId, BeerDTOV2 beerDTO);
+    void updateBeer(UUID beerId, BeerDtoV2 beerDTO);
 
     void deleteById(UUID beerId);
 }

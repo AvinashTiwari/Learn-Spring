@@ -1,44 +1,39 @@
 package learn.avinash.spring.msscbrewy.web.controller.v2;
 
-import learn.avinash.spring.msscbrewy.services.BeerService;
 import learn.avinash.spring.msscbrewy.services.v2.BeerServiceV2;
-import learn.avinash.spring.msscbrewy.web.model.BeerDTO;
-import learn.avinash.spring.msscbrewy.web.model.v2.BeerDTOV2;
+import learn.avinash.spring.msscbrewy.web.model.v2.BeerDtoV2;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
-@Validated
+@Slf4j
+@RequiredArgsConstructor
 @RequestMapping("/api/v2/beer")
 @RestController
 public class BeerControllerV2 {
     private final BeerServiceV2 beerServiceV2;
 
-    public BeerControllerV2(BeerServiceV2 beerServiceV2) {
-        this.beerServiceV2 = beerServiceV2;
-    }
-
     @GetMapping({"/{beerId}"})
-    public ResponseEntity<BeerDTOV2> getBeer(@NotNull  @PathVariable("beerId") UUID beerId){
+    public ResponseEntity<BeerDtoV2> getBeer(@PathVariable("beerId") UUID beerId){
 
         return new ResponseEntity<>(beerServiceV2.getBeerById(beerId), HttpStatus.OK);
     }
 
     @PostMapping // POST - create new beer
-    public ResponseEntity handlePost(@Valid @NotNull @RequestBody BeerDTOV2 beerDto){
+    public ResponseEntity handlePost(@Valid @RequestBody BeerDtoV2 beerDto){
 
-        BeerDTOV2 savedDto = beerServiceV2.saveNewBeer(beerDto);
+        log.debug("in handle post...");
 
-        HttpHeaders headers = new HttpHeaders();
+        val savedDto = beerServiceV2.saveNewBeer(beerDto);
+
+        var headers = new HttpHeaders();
         //todo add hostname to url
         headers.add("Location", "/api/v1/beer/" + savedDto.getId().toString());
 
@@ -46,7 +41,7 @@ public class BeerControllerV2 {
     }
 
     @PutMapping({"/{beerId}"})
-    public ResponseEntity handleUpdate(@PathVariable("beerId") UUID beerId, @Valid @RequestBody BeerDTOV2 beerDto){
+    public ResponseEntity handleUpdate(@PathVariable("beerId") UUID beerId, @Valid @RequestBody BeerDtoV2 beerDto){
 
         beerServiceV2.updateBeer(beerId, beerDto);
 
@@ -59,15 +54,4 @@ public class BeerControllerV2 {
         beerServiceV2.deleteById(beerId);
     }
 
-
-    @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<List> validationErrorHandler(ConstraintViolationException e){
-        List<String> errors = new ArrayList<>(e.getConstraintViolations().size());
-
-        e.getConstraintViolations().forEach(constraintViolation -> {
-            errors.add(constraintViolation.getPropertyPath() + " : " + constraintViolation.getMessage());
-        });
-
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
-    }
 }

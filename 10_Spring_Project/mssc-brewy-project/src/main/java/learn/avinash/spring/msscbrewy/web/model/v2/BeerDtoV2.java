@@ -11,7 +11,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BeerDTOV2 {
+public class BeerDtoV2 {
     private UUID id;
     private String beerName;
     private BeerStyleEnum beerStyle;

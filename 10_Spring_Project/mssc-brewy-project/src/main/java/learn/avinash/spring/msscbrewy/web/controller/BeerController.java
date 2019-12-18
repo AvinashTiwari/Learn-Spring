@@ -1,9 +1,7 @@
 package learn.avinash.spring.msscbrewy.web.controller;
 
 import learn.avinash.spring.msscbrewy.services.BeerService;
-import learn.avinash.spring.msscbrewy.services.v2.BeerServiceV2;
 import learn.avinash.spring.msscbrewy.web.model.BeerDTO;
-import learn.avinash.spring.msscbrewy.web.model.v2.BeerDTOV2;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
