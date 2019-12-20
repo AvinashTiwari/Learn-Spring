@@ -1,6 +1,6 @@
 package learn.avinash.spring.msscbrewy.services.v2;
 
-import learn.avinash.spring.msscbrewy.web.model.BeerDTO;
+
 import learn.avinash.spring.msscbrewy.web.model.v2.BeerDtoV2;
 import learn.avinash.spring.msscbrewy.web.model.v2.BeerStyleEnum;
 import lombok.extern.slf4j.Slf4j;

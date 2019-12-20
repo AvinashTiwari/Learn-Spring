@@ -3,7 +3,7 @@ package learn.avinash.spring.msscbrewy.web.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import learn.avinash.spring.msscbrewy.services.BeerService;
-import learn.avinash.spring.msscbrewy.web.model.BeerDTO;
+import learn.avinash.spring.msscbrewy.web.model.BeerDto;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,11 +36,11 @@ public class BeerControllerTest {
     @Autowired
     ObjectMapper objectMapper;
 
-    BeerDTO validBeer;
+    BeerDto validBeer;
 
     @Before
     public void setUp() {
-        validBeer = BeerDTO.builder().id(UUID.randomUUID())
+        validBeer = BeerDto.builder().id(UUID.randomUUID())
                 .beerName("Beer1")
                 .beerStyle("PALE_ALE")
                 .upc(123456789012L)
@@ -61,9 +61,9 @@ public class BeerControllerTest {
     @Test
     public void handlePost() throws Exception {
         //given
-        BeerDTO beerDto = validBeer;
+        BeerDto beerDto = validBeer;
         beerDto.setId(null);
-        BeerDTO savedDto = BeerDTO.builder().id(UUID.randomUUID()).beerName("New Beer").build();
+        BeerDto savedDto = BeerDto.builder().id(UUID.randomUUID()).beerName("New Beer").build();
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 
         given(beerService.saveNewBeer(any())).willReturn(savedDto);
@@ -78,7 +78,7 @@ public class BeerControllerTest {
     @Test
     public void handleUpdate() throws Exception {
         //given
-        BeerDTO beerDto = validBeer;
+        BeerDto beerDto = validBeer;
         beerDto.setId(null);
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 

@@ -1,7 +1,7 @@
 package learn.avinash.spring.msscbrewy.web.controller;
 
 import learn.avinash.spring.msscbrewy.services.BeerService;
-import learn.avinash.spring.msscbrewy.web.model.BeerDTO;
+import learn.avinash.spring.msscbrewy.web.model.BeerDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,15 +21,15 @@ public class BeerController {
     }
 
     @GetMapping("/{beerId}")
-    public ResponseEntity<BeerDTO> getBeer(@PathVariable UUID beerId){
+    public ResponseEntity<BeerDto> getBeer(@PathVariable UUID beerId){
 
         return new ResponseEntity<>(beerService.getBeerById(beerId), HttpStatus.OK);
 
     }
 
     @PostMapping
-    public ResponseEntity handlePost(@Valid BeerDTO beerDTO){
-        BeerDTO saveDto = beerService.saveNewBeer(beerDTO);
+    public ResponseEntity handlePost(@Valid BeerDto beerDTO){
+        BeerDto saveDto = beerService.saveNewBeer(beerDTO);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Location","http://localhost:8080/api/v1/beer/"+ saveDto.getId().toString());
         return  new ResponseEntity(headers, HttpStatus.CREATED);
@@ -37,7 +37,7 @@ public class BeerController {
     }
 
     @PutMapping("/{beerId}")
-    public ResponseEntity handleUpdate(@PathVariable UUID beerId,@Valid BeerDTO beerDTO){
+    public ResponseEntity handleUpdate(@PathVariable UUID beerId,@Valid BeerDto beerDTO){
          beerService.updateBeer(beerId,beerDTO);
 
         return  new ResponseEntity( HttpStatus.NO_CONTENT);

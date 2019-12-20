@@ -1,6 +1,6 @@
 package learn.avinash.spring.msscbrewy.services;
 
-import learn.avinash.spring.msscbrewy.web.model.BeerDTO;
+import learn.avinash.spring.msscbrewy.web.model.BeerDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -10,23 +10,23 @@ import java.util.UUID;
 @Service
 public class BeerServiceImpl implements BeerService {
     @Override
-    public BeerDTO getBeerById(UUID beerId) {
-        return BeerDTO.builder().id(UUID.randomUUID())
+    public BeerDto getBeerById(UUID beerId) {
+        return BeerDto.builder().id(UUID.randomUUID())
                 .beerName("GC")
                 .beerStyle("PA")
                 .build();
     }
 
     @Override
-    public BeerDTO saveNewBeer(BeerDTO beerDTO) {
-        return BeerDTO.builder().id(UUID.randomUUID())
+    public BeerDto saveNewBeer(BeerDto beerDTO) {
+        return BeerDto.builder().id(UUID.randomUUID())
                 .beerName(beerDTO.getBeerName())
                 .beerStyle(beerDTO.getBeerStyle())
                 .build();
     }
 
     @Override
-    public void updateBeer(UUID beerId, BeerDTO beerDTO) {
+    public void updateBeer(UUID beerId, BeerDto beerDTO) {
 
 
     }
