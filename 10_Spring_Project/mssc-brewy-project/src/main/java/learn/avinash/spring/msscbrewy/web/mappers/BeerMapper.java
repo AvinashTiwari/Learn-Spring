@@ -4,7 +4,7 @@ import learn.avinash.spring.msscbrewy.domain.Beer;
 import learn.avinash.spring.msscbrewy.web.model.BeerDto;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(uses = {DateMapper.class})
 public interface BeerMapper {
 
     BeerDto beerToBeerDto(Beer beer);

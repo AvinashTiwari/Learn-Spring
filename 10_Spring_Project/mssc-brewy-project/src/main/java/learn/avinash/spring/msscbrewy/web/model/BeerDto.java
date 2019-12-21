@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Data
@@ -33,4 +34,8 @@ public class BeerDto {
     private BigDecimal price;
 
     private Integer quantityOnDemand;
+
+
+    private OffsetDateTime createdDate;
+    private OffsetDateTime lastUpdatedDate;
 }
