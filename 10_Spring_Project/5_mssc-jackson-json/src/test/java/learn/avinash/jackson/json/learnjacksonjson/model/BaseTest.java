@@ -1,9 +1,11 @@
 package learn.avinash.jackson.json.learnjacksonjson.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -22,6 +24,7 @@ public class BaseTest {
                 .lastUpdatedDate(OffsetDateTime.now())
                 .price(new BigDecimal("12.99"))
                 .upc(123123123123L)
+                .myLocalDate(LocalDate.now())
                 .build();
     }
 }
