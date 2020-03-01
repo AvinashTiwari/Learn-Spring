@@ -1,28 +1,35 @@
 package learn.avinash.spring.springit.domain;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-@Entity
+@Builder
 @Data
+@Entity
+@EqualsAndHashCode
+@AllArgsConstructor
 @NoArgsConstructor
+@RequiredArgsConstructor
+@Table
+@ToString
 public class Link extends  Auditable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NonNull
     private String title;
+    @NonNull
     private String url;
 
     @OneToMany(mappedBy = "link")
     private List<Comment> comments = new ArrayList<>();
 
 
+    public  void addComment(Comment comment ){
+        this.comments.add(comment);
+    }
 }
