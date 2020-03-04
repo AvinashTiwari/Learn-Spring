@@ -14,7 +14,6 @@ import java.util.Objects;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-@RequiredArgsConstructor
 @Table
 @ToString
 public class Vote extends  Auditable {
