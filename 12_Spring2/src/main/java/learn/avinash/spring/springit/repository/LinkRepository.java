@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface LinkedRepository extends JpaRepository<Link, Long> {
+public interface LinkRepository extends JpaRepository<Link, Long> {
     Link findByTitle(String title);
     //List<Link> findAllByTitleLikeOrderByCreationDateDesc(String title);
 }

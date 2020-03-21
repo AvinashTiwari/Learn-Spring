@@ -1,10 +1,6 @@
 package learn.avinash.spring.springit.runner;
 
-import learn.avinash.spring.springit.domain.Link;
-import learn.avinash.spring.springit.repository.CommentRepository;
-import learn.avinash.spring.springit.repository.LinkedRepository;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 

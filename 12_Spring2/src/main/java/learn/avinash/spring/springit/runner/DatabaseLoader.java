@@ -1,5 +1,5 @@
 package learn.avinash.spring.springit.runner;
-
+/*
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -12,3 +12,4 @@ public class DatabaseLoader  implements CommandLineRunner {
         System.out.println("Database loader..");
     }
 }
+*/

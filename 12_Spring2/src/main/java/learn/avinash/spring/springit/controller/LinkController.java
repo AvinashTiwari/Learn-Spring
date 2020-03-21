@@ -1,7 +1,7 @@
 package learn.avinash.spring.springit.controller;
 
 import learn.avinash.spring.springit.domain.Link;
-import learn.avinash.spring.springit.repository.LinkedRepository;
+import learn.avinash.spring.springit.repository.LinkRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,9 +11,9 @@ import java.util.Optional;
 @RequestMapping("/links")
 public class LinkController {
 
-    private LinkedRepository linkedRepository;
+    private LinkRepository linkedRepository;
 
-    public LinkController(LinkedRepository linkedRepository) {
+    public LinkController(LinkRepository linkedRepository) {
         this.linkedRepository = linkedRepository;
     }
 
