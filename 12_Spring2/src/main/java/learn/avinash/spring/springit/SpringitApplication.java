@@ -5,6 +5,7 @@ import learn.avinash.spring.springit.domain.Comment;
 import learn.avinash.spring.springit.domain.Link;
 import learn.avinash.spring.springit.repository.CommentRepository;
 import learn.avinash.spring.springit.repository.LinkRepository;
+import org.ocpsoft.prettytime.PrettyTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -40,6 +41,7 @@ public class SpringitApplication {
 	}
 
 
+	/*
 	@Bean
 	CommandLineRunner runner(LinkRepository linkedRepository, CommentRepository commentRepository){
 		return args -> {
@@ -55,5 +57,12 @@ public class SpringitApplication {
 
 
 		};
+	}
+
+	*/
+
+	@Bean
+	PrettyTime prettyTime(){
+		return  new PrettyTime();
 	}
 }
