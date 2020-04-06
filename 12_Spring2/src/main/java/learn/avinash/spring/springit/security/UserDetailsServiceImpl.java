@@ -1,5 +1,7 @@
 package learn.avinash.spring.springit.security;
 
+import learn.avinash.spring.springit.domain.User;
+import learn.avinash.spring.springit.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -9,21 +11,21 @@ import java.util.Optional;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-/*
+
     private UserRepository userRepository;
 
     public UserDetailsServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
-    }*/
+    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        /*Optional<User> user = userRepository.findByEmail(email);
+        Optional<User> user = userRepository.findByEmail(email);
         if( !user.isPresent() ) {
             throw new UsernameNotFoundException(email);
         }
-        return user.get();*/
+        return user.get();
 
-        return  null;
+
     }
 }
