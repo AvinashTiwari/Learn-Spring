@@ -20,7 +20,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
+           .authorizeRequests()
                 .requestMatchers(EndpointRequest.to("info")).permitAll()
                 .requestMatchers(EndpointRequest.toAnyEndpoint()).hasRole("ADMIN")
                 .antMatchers("/actuator/").hasRole("ADMIN")
@@ -28,13 +28,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/link/submit").hasRole("USER")
                 .antMatchers("/h2-console/**").permitAll()
                 .and()
-                .formLogin()
+           .formLogin()
                 .loginPage("/login").permitAll()
                 .usernameParameter("email")
                 .and()
-                .logout()
+                .csrf().disable()
+                .headers().frameOptions().disable();
+           /*.logout()
                 .and()
-                .rememberMe();
+           .rememberMe();*/
     }
 
     @Override

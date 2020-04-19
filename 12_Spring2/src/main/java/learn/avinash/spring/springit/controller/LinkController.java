@@ -1,5 +1,6 @@
 package learn.avinash.spring.springit.controller;
 
+
 import learn.avinash.spring.springit.domain.Link;
 import learn.avinash.spring.springit.repository.LinkRepository;
 import org.slf4j.Logger;
@@ -38,7 +39,7 @@ public class LinkController {
         if( link.isPresent() ) {
             model.addAttribute("link",link.get());
             model.addAttribute("success", model.containsAttribute("success"));
-            return "link/view";
+            return "link/view";  
         } else {
             return "redirect:/";
         }

@@ -1,5 +1,6 @@
 package learn.avinash.spring.springit.config;
 
+
 import learn.avinash.spring.springit.domain.User;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.context.SecurityContextHolder;

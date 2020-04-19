@@ -1,11 +1,10 @@
 package learn.avinash.spring.springit.bootstrap;
 
-import learn.avinash.spring.springit.domain.Comment;
+
 import learn.avinash.spring.springit.domain.Link;
 import learn.avinash.spring.springit.domain.Role;
 import learn.avinash.spring.springit.domain.User;
 import learn.avinash.spring.springit.repository.*;
-import learn.avinash.spring.springit.repository.LinkRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -14,6 +13,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+
 @Component
 public class DatabaseLoader implements CommandLineRunner {
 

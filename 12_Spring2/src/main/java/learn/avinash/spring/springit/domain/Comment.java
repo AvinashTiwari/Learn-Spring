@@ -2,29 +2,27 @@ package learn.avinash.spring.springit.domain;
 
 import lombok.*;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-@Builder
-@Data
 @Entity
-@EqualsAndHashCode
-@AllArgsConstructor
-@NoArgsConstructor
 @RequiredArgsConstructor
-@Table
+@Getter
+@Setter
 @ToString
-public class Comment extends  Auditable  {
+@NoArgsConstructor
+public class Comment extends Auditable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
     @NonNull
     private String body;
+
     @ManyToOne
     @NonNull
-    private Link link ;
+    private Link link;
 
 }

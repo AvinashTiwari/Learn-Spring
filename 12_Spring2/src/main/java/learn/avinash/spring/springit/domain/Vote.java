@@ -1,26 +1,22 @@
 package learn.avinash.spring.springit.domain;
 
-import lombok.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import java.util.Objects;
-@Builder
-@Data
+import javax.persistence.Id;
+
 @Entity
-@EqualsAndHashCode
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-@Table
-@ToString
-public class Vote extends  Auditable {
-    @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+public class Vote {
+
+    @Id
+    @GeneratedValue
+    private Long id;
     private int vote;
 
-   
+    // user
+    // link
 }
