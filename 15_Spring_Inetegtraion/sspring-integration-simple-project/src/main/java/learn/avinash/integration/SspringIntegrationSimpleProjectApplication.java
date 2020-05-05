@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,7 +25,14 @@ import org.springframework.integration.support.MessageBuilder;
 public class SspringIntegrationSimpleProjectApplication implements ApplicationRunner {
 
 	@Autowired
-	private DirectChannel channel;
+	@Qualifier("inputChannel")
+	private DirectChannel inputchannel;
+	
+	@Autowired
+	@Qualifier("outputChannel")
+	private DirectChannel outputchannel;
+	
+
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SspringIntegrationSimpleProjectApplication.class, args);
@@ -35,19 +43,19 @@ public class SspringIntegrationSimpleProjectApplication implements ApplicationRu
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		// TODO Auto-generated method stub
-		
-		channel.subscribe(new MessageHandler() {
+	
+		outputchannel.subscribe(new MessageHandler() {
 
 			@Override
 			public void handleMessage(Message<?> message) throws MessagingException {
-				new PrintService().print((Message<String>)message );;
+				System.out.print(message.getPayload());
 				
 			}});
 
 		Message<String> message = MessageBuilder.withPayload("Hello world from builder pattern ")
 				.setHeader("NewHeader", "New heder value").build();
 		
-		channel.send(message);
+		inputchannel.send(message);
 		
 	}
 	/*

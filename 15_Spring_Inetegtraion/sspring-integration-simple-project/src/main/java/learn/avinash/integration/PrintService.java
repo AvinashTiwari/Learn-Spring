@@ -4,10 +4,11 @@ import java.util.Map.Entry;
 
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
+import org.springframework.messaging.support.MessageBuilder;
 
 public class PrintService {
 	
-	public void print(Message<String> message) {
+	public Message<String> print(Message<String> message) {
 		MessageHeaders headers = message.getHeaders();
 		
 		for(Entry<String, Object> enter: headers.entrySet()) {
@@ -16,6 +17,8 @@ public class PrintService {
 		}
 		
 		System.out.println(message.getPayload());
+		
+		return MessageBuilder.withPayload("New Message").build();
 	}
 
 }
