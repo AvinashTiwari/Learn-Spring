@@ -17,6 +17,7 @@ import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.MessagingException;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.integration.channel.DirectChannel;
+import org.springframework.integration.core.MessagingTemplate;
 import org.springframework.integration.support.MessageBuilder;
 
 @SpringBootApplication
@@ -28,10 +29,11 @@ public class SspringIntegrationSimpleProjectApplication implements ApplicationRu
 	@Qualifier("inputChannel")
 	private DirectChannel inputchannel;
 	
+	/*
 	@Autowired
 	@Qualifier("outputChannel")
 	private DirectChannel outputchannel;
-	
+	*/
 
 	
 	public static void main(String[] args) {
@@ -40,6 +42,22 @@ public class SspringIntegrationSimpleProjectApplication implements ApplicationRu
 	
 	
 	
+	public void run(ApplicationArguments args) throws Exception {
+		// TODO Auto-generated method stub
+	
+	
+		Message<String> message = MessageBuilder.withPayload("Hello world from builder pattern ")
+				.setHeader("NewHeader", "New heder value").build();
+		
+		inputchannel.send(message);
+		
+		MessagingTemplate template = new MessagingTemplate();
+		Message message1 = template.sendAndReceive(inputchannel,message);
+		System.out.println(message1);
+		
+	}
+	
+	/*
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		// TODO Auto-generated method stub
@@ -57,7 +75,9 @@ public class SspringIntegrationSimpleProjectApplication implements ApplicationRu
 		
 		inputchannel.send(message);
 		
-	}
+		MessagingTemplate template = new MessagingTemplate();
+		
+	}*/
 	/*
 	
 	@Override
