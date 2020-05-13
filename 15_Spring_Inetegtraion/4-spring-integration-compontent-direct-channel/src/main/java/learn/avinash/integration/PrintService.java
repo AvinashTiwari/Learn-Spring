@@ -8,10 +8,11 @@ import org.springframework.messaging.support.MessageBuilder;
 
 public class PrintService {
 	
-	public Message<String> print(Message<String> message) {
-		System.out.println(message.getPayload());
-		int messagenumber = (int) message.getHeaders().get("messageNumber");
-		return MessageBuilder.withPayload("Sending message " + messagenumber).build();
+	public void print(Message<String> message) {
+		
+		throw new RuntimeException("This is error");
+		//System.out.println(message.getPayload());
+		
 	}
 
 }
