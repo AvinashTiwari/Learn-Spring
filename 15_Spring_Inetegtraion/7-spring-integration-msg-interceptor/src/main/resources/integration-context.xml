@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-5.2.xsd">
+
+<int:gateway service-interface="learn.avinash.integration.PrinterGateway"
+default-request-channel="pollableChannel"></int:gateway>
+
+<bean id="interceptor" class="learn.avinash.integration.CustomChannelInterceptor"/>
+
+<int:channel id ="pollableChannel">
+  <int:queue capacity="10"></int:queue>
+    <int:interceptors>
+  <int:ref bean="interceptor"></int:ref>
+  </int:interceptors>
+</int:channel>
+
+
+
+<int:bridge input-channel="pollableChannel" output-channel="inputChannel">
+<int:poller fixed-delay="5" time-unit="SECONDS" max-messages-per-poll = "2"></int:poller>
+</int:bridge>
+
+<task:executor id="executor" pool-size="5"/>
+
+<int:publish-subscribe-channel id="inputChannel" task-executor="executor"></int:publish-subscribe-channel>
+
+
+<bean class="learn.avinash.integration.PrintService" id="printService" />
+<bean class="learn.avinash.integration.UppercasePrintService" id="uppercaseprintService" />
+
+<int:service-activator order="2" ref="uppercaseprintService" method="print" input-channel="inputChannel"  > </int:service-activator>
+<int:service-activator  order="1" ref="printService" method="print" input-channel="inputChannel"  > </int:service-activator>
+</beans>
