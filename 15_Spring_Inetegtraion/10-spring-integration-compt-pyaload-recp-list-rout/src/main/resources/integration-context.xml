@@ -8,23 +8,29 @@
 <int:gateway service-interface="learn.avinash.integration.PrinterGateway"
 default-request-channel="inputChannel"></int:gateway>
 
-<int:recipient-list-router input-channel = "inputChannel">
- <int:recipient  selector-expression="payload.equals(5)" channel="intChannel"/>
-  <int:recipient  channel="stringChannel"/>
+<int:recipient-list-router input-channel = "inputChannel" default-output-channel="defaultChannel">
+ <int:recipient  selector-expression="payload.equals(51)" channel="intChannel"/>
+  <int:recipient  selector-expression="payload.equals(51)"  channel="stringChannel"/>
  
 </int:recipient-list-router>
  
  
 
-<int:channel id="inputChannel" > 
-</int:channel>
+<int:channel id="inputChannel" > </int:channel>
+<int:channel id="defaultChannel" > </int:channel>
+<int:channel id="intChannel" > </int:channel>
+
 
 <bean class="learn.avinash.integration.PrintService" id="printService" />
 <bean class="learn.avinash.integration.NumericPrintService" id="numericPrintService" />
+<bean class="learn.avinash.integration.DefaultService" id="defaultService" />
 
 <int:service-activator ref="printService" method="print"
    input-channel="stringChannel"  >  </int:service-activator>
    
    <int:service-activator ref="numericPrintService" method="print"
    input-channel="inputChannel"  >  </int:service-activator>
+
+   <int:service-activator ref="defaultService" method="print"
+   input-channel="defaultChannel"  >  </int:service-activator>
 </beans>
