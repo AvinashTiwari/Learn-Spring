@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-5.2.xsd">
+
+<int:gateway service-interface="learn.avinash.integration.EnhancedPrinterGateway"
+default-request-channel="printChannel"></int:gateway>
+
+
+
+<int:channel id="printChannel" > </int:channel>
+<int:channel id="uppercaseChannel" > </int:channel>
+
+<bean id="uppercaseService" class="learn.avinash.integration.UppercaseService"> </bean>
+
+
+<bean class="learn.avinash.integration.PrintService" id="printService" />
+
+<int:service-activator ref="uppercaseService" method="execute" input-channel="uppercaseChannel"></int:service-activator>
+
+
+
+<int:service-activator ref="printService" method="print"
+   input-channel="printChannel"  >  </int:service-activator>
+   
+
+
+ </beans>
