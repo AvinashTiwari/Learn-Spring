@@ -17,4 +17,13 @@
         <ksession name="StatelessPassportValidationStep4" type="stateless"/>
     </kbase>
 
+    <kbase packages="learn.avinash.drool.section03.step5" >
+        <ksession name="StatelessPassportValidationStep5" type="stateless"/>
+    </kbase>
+
+    <kbase packages="learn.avinash.drool.section03.step6" >
+        <ksession name="StatelessPassportValidationStep6" type="stateless"/>
+    </kbase>
+
+
 </kmodule>
