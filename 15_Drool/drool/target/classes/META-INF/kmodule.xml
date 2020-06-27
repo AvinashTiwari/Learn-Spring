@@ -30,4 +30,8 @@
     <kbase packages="learn.avinash.drool.section04.step2">
         <ksession name="StatefulPassportValidationStep2"/>
     </kbase>
+    <kbase packages="learn.avinash.drool.section05.step1">
+        <ksession name="VisaApplicationStep1"/>
+    </kbase>
+
 </kmodule>
