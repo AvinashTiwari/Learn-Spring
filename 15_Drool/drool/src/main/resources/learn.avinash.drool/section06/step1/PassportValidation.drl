@@ -4,6 +4,7 @@ import learn.avinash.drool.domain.Passport;
 import learn.avinash.drool.domain.Validation;
 import java.time.LocalDate
 import learn.avinash.drool.domain.Visa;
+import learn.avinash.drool.domain.VisaApplication;
 
 rule "Valid passport"
 	dialect "mvel"

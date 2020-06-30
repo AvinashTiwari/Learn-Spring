@@ -1,13 +1,14 @@
-package learn.avinash.drool.section06.step1
+package learn.avinash.drool.section06.step2
 
-import learn.avinash.drool.domain.Passport;
 import learn.avinash.drool.domain.Validation;
+import learn.avinash.drool.domain.VisaApplication;
 import java.time.LocalDate
 import learn.avinash.drool.domain.Visa;
-import learn.avinash.drool.domain.VisaApplication;
+import java.time.LocalDate;
 
 rule "Valid passport"
 	dialect "mvel"
+	salience 50
 	when
 		$passport: Passport( validation == Validation.UNKNOWN )
 	then
@@ -19,6 +20,7 @@ end
 
 rule "Expired passport"
 	dialect "mvel"
+	salience 60
 	when
 		$passport: Passport( isExpired()  )
 	then
@@ -31,6 +33,7 @@ end
 
 rule "Full passport"
 	dialect "mvel"
+	salience 60
 	when
 		$passport: Passport( unusedVisaPages == 0   )
 	then

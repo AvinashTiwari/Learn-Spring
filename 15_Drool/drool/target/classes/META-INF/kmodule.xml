@@ -44,4 +44,8 @@
     <kbase packages="learn.avinash.drool.section06.step1">
         <ksession name="VisaIssueStep1"/>
     </kbase>
+
+    <kbase packages="learn.avinash.drool.section06.step2">
+        <ksession name="VisaIssueStep2"/>
+    </kbase>
 </kmodule>
