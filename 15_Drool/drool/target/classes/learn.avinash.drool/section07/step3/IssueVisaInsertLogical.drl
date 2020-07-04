@@ -1,0 +1,15 @@
+package learn.avinash.drool.section07.step3
+
+import learn.avinash.drool.domain.ValidVisaApplication;
+import learn.avinash.drool.domain.VisaApplication;
+import learn.avinash.drool.domain.Visa;
+
+rule "Issue visa for valid applications"
+	dialect "mvel"
+	when
+	  ValidVisaApplication( $visaApplication: this.visaApplication )
+	then
+	  Visa visa = new Visa( $visaApplication.getPassportNumber() );
+	  System.out.println("Issue " + visa);
+	  insertLogical( visa )
+end

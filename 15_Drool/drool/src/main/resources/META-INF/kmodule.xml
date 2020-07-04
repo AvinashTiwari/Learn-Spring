@@ -62,4 +62,21 @@
     <kbase packages="learn.avinash.drool.section06.step6">
         <ksession name="VisaIssueStep6"/>
     </kbase>
+
+
+    <kbase packages="learn.avinash.drool.section07.step1">
+        <ksession name="VisaInsertLogicalStep1"/>
+    </kbase>
+    <kbase packages="learn.avinash.drool.section07.step2">
+        <ksession name="VisaInsertLogicalStep2"/>
+    </kbase>
+    <kbase packages="learn.avinash.drool.section07.step3">
+        <ksession name="VisaInsertLogicalStep3"/>
+    </kbase>
+    <kbase packages="learn.avinash.drool.section07.step4">
+        <ksession name="VisaInsertLogicalStep4"/>
+    </kbase>
+
+
+
 </kmodule>
