@@ -28,6 +28,19 @@
 			<artifactId>camel-spring-boot-starter</artifactId>
 			<version>3.4.0</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.camel/camel-test-spring -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-test-spring</artifactId>
+			<version>3.4.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

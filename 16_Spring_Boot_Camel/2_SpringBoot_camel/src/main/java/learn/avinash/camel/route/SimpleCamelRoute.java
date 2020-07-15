@@ -1,3 +1,4 @@
+/*
 package learn.avinash.camel.route;
 
 import org.apache.camel.builder.RouteBuilder;
@@ -17,3 +18,4 @@ public class SimpleCamelRoute  extends RouteBuilder{
 
     }
 }
+*/
