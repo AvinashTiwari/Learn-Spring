@@ -32,4 +32,10 @@ describe("company test", () => {
     const readcompany = await Company.findById(compnay.id);
     expect(readcompany.name).toBe(compnay.name);
   });
+
+  test("update company", async () => {
+    await Company.updateOne({ _id: compnay.id }, { name: "Name modified" });
+    const readcompany = await Company.findById(compnay.id);
+    expect(readcompany.name).toBe("Name modified");
+  });
 });
