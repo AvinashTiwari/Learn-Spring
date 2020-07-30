@@ -38,4 +38,12 @@ describe("company test", () => {
     const readcompany = await Company.findById(compnay.id);
     expect(readcompany.name).toBe("Name modified");
   });
+
+  test("Delete company", async () => {
+    const count = await Company.countDocuments();
+    expect(count).toBe(1);
+    await Company.deleteOne({ _id: compnay.id });
+    const newcount = await Company.countDocuments();
+    expect(newcount).toBe(0);
+  });
 });
