@@ -10,7 +10,7 @@ const TaxiSchema = new Schema({
   brand: { type: String, require: true },
   model: { type: String, require: true },
   year: { type: Number, require: true },
-  Owner: OwnerSchema,
+  owner: OwnerSchema,
 });
 
 module.exports = mongoose.model("taxi", TaxiSchema);
