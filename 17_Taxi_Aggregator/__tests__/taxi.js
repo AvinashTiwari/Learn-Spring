@@ -55,11 +55,9 @@ describe("Taxi test", () => {
     company = await company.save();
     console.log(company);
 
-    const readCompany = await Company.findById(company.id);
+    const readCompany = await Company.findById(company.id).populate("taxies");
 
-    console.log(readCompany.populate());
-
-    //expect(readCompany.taxis[0].model).toBe("Yaris");
-    //expect(readCompany.taxis[1].model).toBe("Class E");
+    expect(readCompany.taxies[0].model).toBe("Yaris");
+    expect(readCompany.taxies[1].model).toBe("Class E");
   });
 });
