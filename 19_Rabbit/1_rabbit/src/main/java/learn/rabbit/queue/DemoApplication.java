@@ -17,7 +17,8 @@ public class DemoApplication implements CommandLineRunner {
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
-		rabbitTemplate.convertAndSend();
+	public void run(String... args)  {
+		rabbitTemplate.convertAndSend("Hello from our first message");
+
 	}
 }
