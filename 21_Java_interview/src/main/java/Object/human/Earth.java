@@ -1,4 +1,4 @@
-package Object;
+package Object.human;
 
 public class Earth {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Object;
+package Object.human;
 
 public class Human {
     String name;
