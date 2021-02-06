@@ -1,4 +1,4 @@
-package String.reversal;
+package reversal.string;
 
 public class StringReversalOne {
     public static void main(String[] args) {
