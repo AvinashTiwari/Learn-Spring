@@ -27,7 +27,7 @@ public class App {
         int length =0;
         Node currentNode = node;
         while(currentNode != null){
-           
+
             length++;
             currentNode = currentNode.next;
         }
