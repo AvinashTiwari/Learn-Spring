@@ -56,15 +56,39 @@ public class DoublyLinkedList {
     }
 
     public Node deleteLast(){
-        Node  temp = first;
+        Node  temp = last;
         if(first.next == null){
-            last = null;
+            first = null;
         }else
         {
-            first.next.previous = null;
+            last.previous.next = null;
 
         }
-        first = first.next;
+        last = last.previous;
         return temp;
+    }
+
+    public boolean insertAfter(int key, int data){
+        Node current = first;
+        while(current.data !=key){
+            current = current.next;
+            if(current == null){
+                return false;
+            }
+        }
+
+        Node newNode = new Node();
+        if(current == last){
+            current.next = null;
+            last = newNode;
+        }else
+        {
+            newNode.next = current.next;
+            current.previous.next = newNode;
+        }
+
+        newNode.previous = current;
+        current.next = newNode;
+        return true;
     }
 }
