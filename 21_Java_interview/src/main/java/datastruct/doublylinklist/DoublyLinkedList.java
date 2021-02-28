@@ -91,4 +91,50 @@ public class DoublyLinkedList {
         current.next = newNode;
         return true;
     }
+
+    public Node deleteKey(int key){
+        Node current = first;
+        while(current.data != key){
+            current = current.next;
+            if(current == null){
+                return  null;
+            }
+        }
+
+        if(current == first){
+            first = current.next;
+        }else
+        {
+            current.previous.next = current.next;
+        }
+
+        if(current == last){
+            last = current.previous;
+        }else
+        {
+            current.next.previous = current.previous;
+        }
+
+        return current;
+    }
+    public void displayForward(){
+        System.out.println("First --> Last");
+         Node current = first;
+         while(current != null){
+             current.displayNode();
+             current = current.next;
+         }
+        System.out.println();
+    }
+
+
+    public void DisplayBackward(){
+        System.out.println("Last --> First");
+        Node current = last;
+        while(current != null){
+            current.displayNode();
+            current = current.previous;
+        }
+        System.out.println();
+    }
 }
