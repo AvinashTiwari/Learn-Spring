@@ -1,7 +1,13 @@
 package com.example.mobile.app.ws.ui.controller;
 
+import com.example.mobile.app.ws.ui.model.request.UserDetailsRequestModel;
 import com.example.mobile.app.ws.ui.model.response.UserRest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+
 
 @RestController
 @RequestMapping("users")
@@ -14,19 +20,26 @@ public class UserController {
     }
 
 
-    @GetMapping(path="/{userId}")
-    public UserRest getUser(@PathVariable String userId){
+    @GetMapping(path="/{userId}", produces ={MediaType.APPLICATION_XML_VALUE,
+                                             MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<UserRest> getUser(@PathVariable String userId){
 
         UserRest returnValue = new UserRest();
         returnValue.setFirstName("Avinash");
         returnValue.setLastName("Tiwari");
         returnValue.setEmailId("test@test.com");
-        return  returnValue;
+        return  new ResponseEntity<>(returnValue,HttpStatus.OK);
     }
 
-    @PostMapping
-    public String createUser(){
-        return "Create user was called";
+    @PostMapping( consumes ={MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_JSON_VALUE},  produces ={MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_JSON_VALUE})
+    public  ResponseEntity<UserRest> createUser(@RequestBody UserDetailsRequestModel userDetails){
+        UserRest returnValue = new UserRest();
+        returnValue.setFirstName(userDetails.getFirstName());
+        returnValue.setLastName(userDetails.getLastName());
+        returnValue.setEmailId(userDetails.getEmail());
+        return  new ResponseEntity<>(returnValue,HttpStatus.OK);
     }
 
     @PutMapping
