@@ -1,5 +1,6 @@
 package com.example.mobile.app.ws.ui.controller;
 
+import com.example.mobile.app.ws.ui.model.request.UpdateUserDetailsRequestModel;
 import com.example.mobile.app.ws.ui.model.request.UserDetailsRequestModel;
 import com.example.mobile.app.ws.ui.model.response.UserRest;
 import org.springframework.http.HttpStatus;
@@ -60,9 +61,15 @@ public class UserController {
         return  new ResponseEntity<>(returnValue,HttpStatus.OK);
     }
 
-    @PutMapping
-    public  String updateUser(){
-        return "update Usr was called";
+    @PutMapping(consumes ={MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_JSON_VALUE},  produces ={MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_JSON_VALUE},path="/{userId}")
+    public  UserRest updateUser(@PathVariable String userId,@Valid @RequestBody UpdateUserDetailsRequestModel userDetails){
+        UserRest storedUserdetails = users.get(userId);
+        storedUserdetails.setFirstName(userDetails.getFirstName());
+        storedUserdetails.setLastName(userDetails.getLastName());
+        users.put(userId, storedUserdetails);
+        return storedUserdetails;
     }
 
     @DeleteMapping
