@@ -15,7 +15,10 @@ import java.util.Date;
 public class AppExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {Exception.class})
     public ResponseEntity<Object> handleAnyException(Exception ex, WebRequest request){
-        ErrorMessage errorMessage = new ErrorMessage(new Date(), ex.getLocalizedMessage());
+        String errorMessageDesc =  ex.getLocalizedMessage();
+        if(errorMessageDesc == null)  errorMessageDesc = ex.toString();
+
+        ErrorMessage errorMessage = new ErrorMessage(new Date(), errorMessageDesc);
 
       return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
