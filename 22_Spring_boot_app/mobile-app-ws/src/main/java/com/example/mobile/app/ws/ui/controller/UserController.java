@@ -1,5 +1,6 @@
 package com.example.mobile.app.ws.ui.controller;
 
+import com.example.mobile.app.ws.execption.UserServiceException;
 import com.example.mobile.app.ws.ui.model.request.UpdateUserDetailsRequestModel;
 import com.example.mobile.app.ws.ui.model.request.UserDetailsRequestModel;
 import com.example.mobile.app.ws.ui.model.response.UserRest;
@@ -36,8 +37,9 @@ public class UserController {
         returnValue.setEmailId("test@test.com");
         */
 
-        String firstName = null;
-        int firstNameLength = firstName.length();
+       if(true){
+           throw new UserServiceException("Message");
+       }
 
         if(users.containsKey(userId)){
             return  new ResponseEntity<>(users.get(userId),HttpStatus.OK);
