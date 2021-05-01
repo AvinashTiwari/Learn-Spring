@@ -2,12 +2,14 @@ package com.example.photo.app.api.users;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
-public class DemoApplication {
+@EnableDiscoveryClient
+public class PhotoAppUserApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(PhotoAppUserApplication.class, args);
 	}
 
 }
